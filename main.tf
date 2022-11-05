@@ -9,19 +9,19 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-east-1"
+  region = "us-east-2"
 }
 #####################################################################################
 # Create a VPC
 resource "aws_vpc" "testing" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "10.0.0.0/24"
   tags = {
     "Name" = "elram-naim-dev-vpc"
   }
 }
 resource "aws_subnet" "Subnet_Web" {
   vpc_id     = aws_vpc.testing.id
-  cidr_block = "10.0.0.0/24"
+  cidr_block = "10.0.0.0/27"
 
   tags = {
     Name = "elram-naim-k8s-subnet"
